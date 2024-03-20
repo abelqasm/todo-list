@@ -83,9 +83,7 @@ const VirualizedList = () => {
       const startIndex = Math.floor(scrollTop / itemHeight);
       const endIndex = Math.floor((scrollTop + clientHeight) / itemHeight);
 
-      setList(() => items.slice(startIndex, endIndex));
-      console.log("test", startIndex, endIndex);
-      console.log(list);
+      setList(() => items.slice(startIndex, endIndex + 1));
     }
   };
   useEffect(() => {
