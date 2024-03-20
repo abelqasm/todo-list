@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import TodoForm from './components/TodoForm'
-import './index.css'
 import { TodoList } from './entities';
 import ListTodos from './components/ListTodos';
 
