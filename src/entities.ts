@@ -1,5 +1,5 @@
 export type TodoList = {
-    item: string | undefined;
+    text: string | undefined;
     date: Date;
     id: number;
 }
