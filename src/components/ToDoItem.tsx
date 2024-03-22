@@ -12,6 +12,14 @@ const ToDoItem = ({ item, onDelete }: Props) => {
   const [checked, setChecked] = useState<boolean>(false);
   const [modify, setModify] = useState<boolean>(false);
   const ref = useRef<HTMLInputElement>(null);
+  const changeTodo = () => {
+    if (modify) {
+      if (ref.current?.value != "") {
+        item.text = ref.current?.value;
+      }
+    }
+    setModify((prevModif) => !prevModif);
+  };
   const date = item.date;
   return (
     <div className="w-[90%] md:w-4/6 border p-3 flex rounded-md bg-slate-700 text-white md:text-base text-sm shadow-sm shadow-black">
@@ -27,10 +35,7 @@ const ToDoItem = ({ item, onDelete }: Props) => {
           <form
             onSubmit={(event: FormEvent<HTMLFormElement>) => {
               event.preventDefault();
-              if (ref.current?.value != "") {
-                item.text = ref.current?.value;
-              }
-              setModify((prevModif) => !prevModif);
+              changeTodo();
             }}
           >
             <input
@@ -56,14 +61,7 @@ const ToDoItem = ({ item, onDelete }: Props) => {
         />
         <button
           className="max-w-fit px-1 py-1 rounded-lg bg-blue-600 flex items-center justify-center shadow-sm shadow-black"
-          onClick={() => {
-            if (modify) {
-              if (ref.current?.value != "") {
-                item.text = ref.current?.value;
-              }
-            }
-            setModify((prevModif) => !prevModif);
-          }}
+          onClick={() => changeTodo()}
         >
           {!modify ? (
             <img
