@@ -58,7 +58,9 @@ const ToDoItem = ({ item, onDelete }: Props) => {
           className="max-w-fit px-1 py-1 rounded-lg bg-blue-600 flex items-center justify-center shadow-sm shadow-black"
           onClick={() => {
             if (modify) {
-              item.text = ref.current?.value;
+              if (ref.current?.value != "") {
+                item.text = ref.current?.value;
+              }
             }
             setModify((prevModif) => !prevModif);
           }}
